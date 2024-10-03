@@ -1,0 +1,25 @@
+version: '3'
+services:
+  nginx:
+    build: ./docker  # Ruta donde está el Dockerfile para Nginx
+    ports:
+      - "80:80"  # Mapea el puerto 80 del host al puerto 80 del contenedor
+    networks:
+      - mynetwork  # Define una red para la comunicación interna entre contenedores
+    depends_on:
+      - api-gateway1
+      - api-gateway2
+
+  api-gateway1:
+    image: api-gateway:latest  # Imagen Docker del API Gateway 1
+    networks:
+      - mynetwork
+
+  api-gateway2:
+    image: api-gateway:latest  # Imagen Docker del API Gateway 2
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge  # Define una red interna para la comunicación entre contenedores
