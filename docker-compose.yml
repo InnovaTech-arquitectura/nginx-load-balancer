@@ -3,7 +3,7 @@ services:
   nginx:
     build: ./docker
     ports:
-      - "80:80"  # Mapea el puerto 80 del host al puerto 80 del contenedor
+      - "8010:8010"  # Mapea el puerto 80 del host al puerto 80 del contenedor
     networks:
       - mynetwork  # Define una red para la comunicación interna entre contenedores
 

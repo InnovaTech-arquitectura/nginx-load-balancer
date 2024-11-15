@@ -5,7 +5,7 @@ FROM nginx:latest
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Exponemos el puerto 80 para el tráfico HTTP
-EXPOSE 80
+EXPOSE 8010
 
 # Comando por defecto para iniciar Nginx
 CMD ["nginx", "-g", "daemon off;"]
