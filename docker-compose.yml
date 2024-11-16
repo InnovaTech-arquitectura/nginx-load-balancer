@@ -7,6 +7,19 @@ services:
     networks:
       - mynetwork  # Define una red para la comunicación interna entre contenedores
 
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    ports:
+      - "8084:8080"  # Mapea el puerto 8080 del contenedor al 8081 en el host
+    restart: unless-stopped  # Reiniciar a menos que se detenga manualmente
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+      
 networks:
   mynetwork:
     driver: bridge  # Define una red interna para la comunicación entre contenedores
